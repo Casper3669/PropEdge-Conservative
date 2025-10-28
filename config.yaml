@@ -1,0 +1,61 @@
+BANKROLL:
+  BASE: 500.0
+
+SCORING:
+  EDGE_WEIGHT: 0.40
+  ACCURACY_WEIGHT: 0.25
+  RECENT_WEIGHT: 0.25
+  DTM_WEIGHT: 0.10
+  MIN_ACCURACY_SAMPLE: 20
+  TIER_THRESHOLDS:
+    S:
+      MIN_SCORE: 80
+      MIN_P: 0.60
+      MIN_EDGE: 0.05
+    A:
+      MIN_SCORE: 65
+      MIN_P: 0.55
+      MIN_EDGE: 0.02
+    B:
+      MIN_SCORE: 50
+
+CHAMPIONS:
+  # STANDARD: only all-correct pays (typical Underdog power play)
+  PAYOUT_TABLE_STANDARD:
+    2: {0: 0.0, 1: 0.0, 2: 3.0}
+    3: {0: 0.0, 1: 0.0, 2: 0.0, 3: 6.0}
+    4: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 10.0}
+    5: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 20.0}
+    6: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 0.0, 5: 0.0, 6: 50.0}
+  # FLEX (insured) examples: non-zero payouts for partial hits on 5- and 6-legs
+  PAYOUT_TABLE_FLEX:
+    2: {0: 0.0, 1: 0.0, 2: 3.0}
+    3: {0: 0.0, 1: 0.0, 2: 0.0, 3: 6.0}
+    4: {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0, 4: 10.0}
+    5: {0: 0.0, 1: 0.0, 2: 0.5, 3: 1.0, 4: 2.0, 5: 10.0}   # example insured payouts
+    6: {0: 0.0, 1: 0.0, 2: 0.5, 3: 1.0, 4: 2.0, 5: 5.0, 6: 25.0}
+
+CORRELATION:
+  SAME_GAME_PENALTY: 0.25
+
+RISK:
+  DAILY_BUDGET_FRACTION: 0.20       # 20% of bankroll each day
+  TOP_PLAY_SHARE: 0.80              # 80% of that to best 2-leg
+  PARLAY_PLAY_SHARE: 0.20           # 20% to one 4–6 leg lotto
+  MIN_STAKE: 5.00
+  MAX_PROP_APPEARANCES: 3
+  MIN_EV_BY_LEG:
+    2: 0.01
+    3: 0.04
+    4: 0.05
+    5: 0.06
+    6: 0.08
+  PER_ENTRY_HARD_MAX: 0.07
+  PER_ENTRY_CAPS:
+    S: 0.06
+    A: 0.04
+    B: 0.025
+  QUALITY_WEIGHTS:
+    edge_pts_to_cap: 0.002
+    confluence_to_cap: 0.003
+    corr_penalty: 0.50

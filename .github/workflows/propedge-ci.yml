@@ -1,0 +1,28 @@
+﻿name: PropEdge CI
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pydantic pandas PyYAML
+      - name: Lint
+        run: python -m py_compile 
+      - name: Smoke test
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for p in ['ingest','scoring','champions','bankroll']:
+              assert Path(p).exists(), f"Missing {p}"
+          print("PropEdge layout OK")
+          PY

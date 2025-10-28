@@ -1,0 +1,15 @@
+promos:
+  - name: NFL_2leg_boost
+    type: boost
+    sports: ["NFL"]
+    min_legs: 2
+    boost_pct: 0.30
+    max_stake: 20
+    apply_now: true
+
+  - name: MultiSport_5leg_insurance
+    type: insurance
+    required_sports: 3
+    min_legs: 5
+    max_stake: 20
+    apply_now: false
