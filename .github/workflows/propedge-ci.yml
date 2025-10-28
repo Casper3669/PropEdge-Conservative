@@ -3,7 +3,6 @@ on:
   push:
     branches: [ main, dev ]
   pull_request:
-
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -16,13 +15,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pydantic pandas PyYAML
-      - name: Lint
-        run: python -m py_compile 
-      - name: Smoke test
+      - name: Lint all files
+        run: python -m py_compile bankroll/bankroll.py champions/__init__.py champions/builder.py champions/correlation.py champions/models.py champions/payouts.py champions/validate.py ingest/__init__.py ingest/csv_loaders.py ingest/excel_loaders.py ingest/ingest_any.py ingest/schema.py main.py scoring/__init__.py scoring/models.py scoring/scoring.py unify/__init__.py unify/unify.py
+      - name: Verify folder structure
         run: |
           python - <<'PY'
           from pathlib import Path
-          for p in ['ingest','scoring','champions','bankroll']:
+          for p in ['ingest','unify','scoring','champions','bankroll']:
               assert Path(p).exists(), f"Missing {p}"
-          print("PropEdge layout OK")
+          print("Folder structure OK")
           PY
