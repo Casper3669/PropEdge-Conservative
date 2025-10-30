@@ -21,7 +21,13 @@ def optimize(req: OptimizeRequest):
     bankroll = req.bankroll or DEFAULT_BANKROLL
     result = build_entries(props_df, bankroll)
     
-    ## BEGIN FORMAT DECISION POST
+    
+    # Attach promo diagnostics if any
+    try:
+        if isinstance(result, dict):
+            result.setdefault('meta', {})['promo_haircut'] = _PROMO_DIAG
+    except Exception: pass
+## BEGIN FORMAT DECISION POST
     try:
         # Load CFG for payouts/thresholds
         import os, yaml
@@ -74,4 +80,5 @@ def optimize(req: OptimizeRequest):
         if isinstance(result, dict):
             result.setdefault('meta',{})['format_decision_error'] = str(_err)
     ## END FORMAT DECISION POSTreturn OptimizeResponse(**result)
+
 

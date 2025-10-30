@@ -41,7 +41,7 @@ def _roi(ev_mult: float) -> float:
 
 def decide_format(p: List[float], cfg: Dict[str,Any], delta: float = 0.02) -> Dict[str,Any]:
     """Return dict: {format, ev_std, ev_flex, roi_std, roi_flex, reason} or {format: 'REJECT', ...}"""
-    payouts = cfg["PAYOUTS"]["UNDERDOG"]
+    payouts = effective_payouts(cfg)
     ev_std  = ev_multiple_standard3(p, payouts["STANDARD"])
     ev_flex = ev_multiple_flex3(p, payouts["FLEX"])
     roi_std, roi_flex = _roi(ev_std), _roi(ev_flex)
@@ -73,3 +73,4 @@ def decide_format(p: List[float], cfg: Dict[str,Any], delta: float = 0.02) -> Di
     # 5) negative fallback
     return {"format":"REJECT","ev_std":ev_std,"ev_flex":ev_flex,"roi_std":roi_std,"roi_flex":roi_flex,
             "reason":"no format meets ROI floors or positive ROI"}
+
