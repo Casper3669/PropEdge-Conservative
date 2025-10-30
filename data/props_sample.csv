@@ -1,0 +1,4 @@
+source,platform,sport,game_datetime_utc,player,team,opponent,market,line,side,proj_mean,prob_over
+playerpropsai,underdog,NBA,2025-10-29T23:00:00Z,Anfernee Simons,POR,BOS,pra,20.5,over,36.4,0.70
+playerpropsai,underdog,NBA,2025-10-29T23:00:00Z,Anfernee Simons,POR,BOS,pa,18.5,over,31.9,0.68
+playerpropsai,underdog,NBA,2025-10-30T00:30:00Z,Naji Marshall,IND,DAL,pra,16.5,over,26.4,0.62

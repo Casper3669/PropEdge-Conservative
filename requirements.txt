@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pydantic
+pandas
+numpy
+python-dateutil
+pytz
+requests

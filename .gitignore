@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿__pycache__/
 *.pyc
 *.pyo
@@ -7,3 +8,20 @@
 *.csv
 data/tmp/
 .DS_Store
+=======
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+
+# Data/outputs
+data/*.json
+data/*.parquet
+*.log
+>>>>>>> abfc7e0 (PropEdge-Conservative sync from workstation (2025-10-30 16:40:30 -05:00))
