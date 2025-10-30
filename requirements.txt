@@ -6,3 +6,5 @@ numpy
 python-dateutil
 pytz
 requests
+
+PyYAML
